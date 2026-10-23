@@ -1,0 +1,21 @@
+{
+  "name": "mobilepay-starter",
+  "description": "MobilePay starter API and admin site",
+  "repository": "https://github.com/ITZ-HAKEEB/MOBILEPAY",
+  "keywords": ["python", "fastapi", "mongodb"],
+  "env": {
+    "APP_NAME": {"description": "Public application name", "value": "MobilePay"},
+    "ENVIRONMENT": {"description": "development or production", "value": "production"},
+    "MONGODB_URI": {"description": "MongoDB connection URI", "required": true},
+    "MONGODB_DB": {"description": "MongoDB database name", "value": "mobilepay"},
+    "SECRET_KEY": {"description": "Long random secret used for token signing", "required": true},
+    "ADMIN_API_KEY": {"description": "Long random secret for admin endpoints", "required": true},
+    "CORS_ORIGINS": {"description": "Comma-separated allowed frontend origins", "value": "https://example.com"},
+    "OTP_PROVIDER": {"description": "twilio or demo (demo is for local testing only)", "value": "twilio"},
+    "TWILIO_ACCOUNT_SID": {"description": "Twilio Account SID", "required": false},
+    "TWILIO_AUTH_TOKEN": {"description": "Twilio Auth Token", "required": false},
+    "TWILIO_VERIFY_SERVICE_SID": {"description": "Twilio Verify Service SID", "required": false},
+    "ENABLE_DEMO_OTP": {"description": "Enable local-only demo OTP; keep false in production", "value": "false"}
+  },
+  "formation": {"web": {"quantity": 1, "size": "basic"}}
+}

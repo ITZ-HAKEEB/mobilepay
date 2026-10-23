@@ -1,0 +1,21 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>{{ app_name }} Admin</title><link rel="stylesheet" href="/static/style.css"></head>
+<body><header class="nav"><a class="brand" href="/">{{ app_name }}</a><a href="/">Home</a></header>
+<main class="admin-wrap"><h1>Admin dashboard</h1>
+<p>Enter the ADMIN_API_KEY configured on the server. The key is sent in an HTTPS header; never paste it into public/shared computers.</p>
+<label for="key">Admin API key</label><input id="key" type="password" autocomplete="off" placeholder="Admin key">
+<button class="button" id="load">Load stats</button><pre id="result">Stats will appear here.</pre>
+<p class="notice">Only expose this dashboard over HTTPS. Use a strong key and rotate it if it leaks.</p></main>
+<script>
+document.getElementById('load').addEventListener('click', async () => {
+ const key = document.getElementById('key').value;
+ const out = document.getElementById('result');
+ out.textContent = 'Loading…';
+ try {
+  const r = await fetch('/api/admin/stats', {headers: {'X-Admin-Key': key}});
+  const data = await r.json();
+  out.textContent = JSON.stringify(data, null, 2);
+ } catch (e) { out.textContent = 'Could not load stats. Check connection and server logs.'; }
+});
+</script></body></html>

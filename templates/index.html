@@ -1,0 +1,26 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>{{ app_name }}</title><link rel="stylesheet" href="/static/style.css">
+</head>
+<body>
+  <header class="nav"><a class="brand" href="/">{{ app_name }}</a><a href="/admin">Admin</a></header>
+  <main class="hero">
+    <div class="pill">Student-friendly • Simple • Secure-minded</div>
+    <h1>Payments, made <span>simpler.</span></h1>
+    <p class="lead">A starter app for account login, payment history UI, and demo payment intents.</p>
+    <div class="actions">
+      {% if apk_url %}<a class="button" href="{{ apk_url }}">Download APK</a>{% else %}<span class="button disabled">APK link coming soon</span>{% endif %}
+      <a class="button secondary" href="/docs">API documentation</a>
+    </div>
+    {% if promo_user_text %}<p class="metric">{{ promo_user_text }}</p>{% endif %}
+    <div class="feature-grid">
+      <article><h3>📱 Mobile-ready API</h3><p>OTP login endpoints for a Flutter app.</p></article>
+      <article><h3>🧾 Payment history</h3><p>Demo records only; no money is transferred.</p></article>
+      <article><h3>🛡️ Safer defaults</h3><p>Environment secrets, token auth, and request limits.</p></article>
+    </div>
+    <p class="notice">This starter does not process live UPI payments. Real payments require an authorized bank/payment partner and their approval.</p>
+  </main>
+  <footer>Made by {{ made_by }} · <a href="{{ instagram_url }}" target="_blank" rel="noopener noreferrer">Instagram</a></footer>
+</body></html>
